@@ -116,7 +116,7 @@ async def castremove(ctx, old_channel: int):
 @bot.command()
 async def castlist(ctx):
      """
-     Prints the name and server of every channel in the cast list
+     Prints every channel in the cast list
      """
      message = "```Here are all channels in the cast list:\n"
      for channel_id in indat["CAST_CHANNELS"]:
@@ -129,7 +129,7 @@ async def castlist(ctx):
 @bot.command()
 async def cast(ctx, message: str):
      """
-     Sends a message into every channel in the cast list.
+     Broadcast message to cast channels.
      The user's message must be enclosed in quotes. The command is deleted after Harold's message is sent
 
      Example: f!say "Harold is the coolest bot"
