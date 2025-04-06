@@ -30,8 +30,9 @@ from discord.ext import commands
 # Setup intents
 intents = discord.Intents.default()
 intents.message_content = True
-desc = "Welcome to Harold-bot V4!"
-bot = commands.Bot(command_prefix=con["CMD_PRFX"], intents=intents, description="Welcome to Harold-bot V4. Harold is ")
+desc = """Welcome to Harold-bot V4!
+Harold is currently under development in his fourth iteration. As such he has very little functionality and will be offline most of the time. A full release will be announced sometime in the future."""
+bot = commands.Bot(command_prefix=con["CMD_PRFX"], intents=intents, description=desc)
 
 #
 # Ready Message
