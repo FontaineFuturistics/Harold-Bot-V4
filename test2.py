@@ -2,10 +2,10 @@
 # GET THE TOKEN
 #
 
-import jhandler
+from jhandler import JHandler
 
 # Load config
-con = jhandler.JHandler("./config/config.json")
+con = JHandler("./config/config.json")
 
 # Load token from .env
 env_file = open(con["ENV_PATH"], "r")
@@ -18,7 +18,7 @@ for line in env_file:
 token = env_dict["TOKEN"]
 
 # Load instance data
-indat = jhandler.JHandler(con["ID_PATH"])
+indat = JHandler(con["ID_PATH"])
 
 #
 # Basic Bot Setup
@@ -52,13 +52,14 @@ async def on_ready():
       game = discord.Game("with your fate | f!help")
       await bot.change_presence(status=discord.Status.online, activity=game)
 
-      # Save config and instance data jhandlers to the bot
+      # Save config and instance data jhandlers to the bot so they can be accessed in Cogs
       bot.indat = indat
       bot.con = con
 
       # Load cogs
       await bot.load_extension("modules.cast")
       await bot.load_extension("modules.fun")
+      await bot.load_extension("modules.admin")
 
 #
 # Message Handler
@@ -78,9 +79,8 @@ async def on_message(message):
 # Command Handler
 #
 
-# TODO: Make command description first lines shorter
 # TODO: Figure out argument descriptions for f!help
-# TODO: Figure out command categories for f!help
+# TODO: Figure out how to rename Cogs
 # TODO: Transition to slash commands
 
 # Ping command
